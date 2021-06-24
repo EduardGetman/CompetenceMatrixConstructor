@@ -11,6 +11,20 @@ namespace CompetenceMatrix.entity
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public String FullName { get; set; }
-        // public Knowledge Knowledge { get; set; }
+        // Я так понял здесь что-то наебнулось так как знаний должнобыть много.
+        // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId
+        //public Knowledge Knowledge { get; set; }
+
+        // Проверяет соотвуетсвует ли сотрудник требованию
+        public bool MeetRequirement(Requirement requirement )
+        {
+            Knowledge RequiredKnowledge = GetKnowledgeByCompetenceId( requirement.Competence.Id);
+            return RequiredKnowledge.Level >= requirement.Level;
+        }
+        private Knowledge GetKnowledgeByCompetenceId(int CompetenceId)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

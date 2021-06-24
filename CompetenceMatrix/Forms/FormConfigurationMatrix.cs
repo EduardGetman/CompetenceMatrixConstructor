@@ -19,11 +19,12 @@ namespace CompetenceMatrix.Forms
         Employee[] SuitableEmployees { 
             get
             {
-                List<Employee> employees = new List<Employee>();
+                List<Employee> result = new List<Employee>();
                 foreach (var item in employees)
                 {
 
                 }
+                return result.ToArray();
             }
         }
         public FormConfigurationMatrix(Position[] positions, Employee[] employees)
