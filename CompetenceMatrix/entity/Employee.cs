@@ -15,6 +15,12 @@ namespace CompetenceMatrix.entity
         // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId
         //public Knowledge Knowledge { get; set; }
 
+        //Возвращает true, если Position не null TODO: Реализовать свойство get
+        public bool HoldPosition { get => throw new NotImplementedException(); }
+
+        //TODO: Когда появиться сылка на должность реализовать.
+        //Если должность назначена вернуть название, если отсутсвует вернуть "Должность отсутствует"
+        public string PositionName { get => throw new NotImplementedException(); }
         // Проверяет соотвуетсвует ли сотрудник требованию
         public bool MeetRequirement(Requirement requirement )
         {

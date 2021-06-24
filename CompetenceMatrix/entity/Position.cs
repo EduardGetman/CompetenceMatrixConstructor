@@ -16,7 +16,7 @@ namespace CompetenceMatrix.entity
         //public List<Employee> Employees { get; set; }
 
         // Возвращает true если работник подходит по требованиям
-        bool IsEmployeeSuitable(Employee employee)
+        public bool IsEmployeeSuitable(Employee employee)
         {
             foreach (var item in Requirements)
             {

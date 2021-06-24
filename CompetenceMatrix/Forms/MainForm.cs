@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CompetenceMatrix.ImplementationLogic;
 
 namespace CompetenceMatrix
 {
     public partial class MainForm : Form
     {
+        public MatrixCompetence MatrixCompetence{ get; set; }
         public MainForm()
         {
             InitializeComponent();

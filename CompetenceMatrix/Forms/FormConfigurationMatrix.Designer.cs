@@ -30,6 +30,9 @@ namespace CompetenceMatrix.Forms
         private void InitializeComponent()
         {
             this.GridEmployeeSelect = new System.Windows.Forms.DataGridView();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEmployeeSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CBPositionName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,9 +49,7 @@ namespace CompetenceMatrix.Forms
             this.RBAllEmployee = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsEmployeeSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridEmployeeSelect)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,13 +65,38 @@ namespace CompetenceMatrix.Forms
             this.GridEmployeeSelect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EmployeeName,
             this.Position,
-            this.IsEmployeeSelected});
+            this.IsEmployeeSelected,
+            this.EmployeeID});
             this.GridEmployeeSelect.Location = new System.Drawing.Point(13, 153);
             this.GridEmployeeSelect.Name = "GridEmployeeSelect";
             this.GridEmployeeSelect.RowHeadersWidth = 51;
             this.GridEmployeeSelect.RowTemplate.Height = 24;
             this.GridEmployeeSelect.Size = new System.Drawing.Size(884, 402);
             this.GridEmployeeSelect.TabIndex = 0;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.FillWeight = 93.04813F;
+            this.EmployeeName.HeaderText = "Сотрудник";
+            this.EmployeeName.MinimumWidth = 6;
+            this.EmployeeName.Name = "EmployeeName";
+            // 
+            // Position
+            // 
+            this.Position.HeaderText = "Должность";
+            this.Position.MinimumWidth = 6;
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            // 
+            // IsEmployeeSelected
+            // 
+            this.IsEmployeeSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.IsEmployeeSelected.HeaderText = "Включить в матрицу";
+            this.IsEmployeeSelected.MinimumWidth = 6;
+            this.IsEmployeeSelected.Name = "IsEmployeeSelected";
+            this.IsEmployeeSelected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsEmployeeSelected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IsEmployeeSelected.Width = 107;
             // 
             // CBPositionName
             // 
@@ -80,7 +106,7 @@ namespace CompetenceMatrix.Forms
             this.CBPositionName.Name = "CBPositionName";
             this.CBPositionName.Size = new System.Drawing.Size(251, 30);
             this.CBPositionName.TabIndex = 1;
-            this.CBPositionName.SelectedIndexChanged += new System.EventHandler(this.CBPositionName_SelectedIndexChanged);
+            this.CBPositionName.SelectedIndexChanged += new System.EventHandler(this.UpdateEmployeeFilter);
             // 
             // label2
             // 
@@ -120,6 +146,7 @@ namespace CompetenceMatrix.Forms
             this.BtnBuildMatrix.TabIndex = 9;
             this.BtnBuildMatrix.Text = "Построить";
             this.BtnBuildMatrix.UseVisualStyleBackColor = true;
+            this.BtnBuildMatrix.Click += new System.EventHandler(this.BtnBuildMatrix_Click);
             // 
             // BtnExit
             // 
@@ -130,6 +157,7 @@ namespace CompetenceMatrix.Forms
             this.BtnExit.TabIndex = 10;
             this.BtnExit.Text = "Выйти";
             this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // panel2
             // 
@@ -191,7 +219,7 @@ namespace CompetenceMatrix.Forms
             this.ChBSuitableEmployees.TabIndex = 19;
             this.ChBSuitableEmployees.Text = "Подходящие сотрудники";
             this.ChBSuitableEmployees.UseVisualStyleBackColor = true;
-            this.ChBSuitableEmployees.CheckedChanged += new System.EventHandler(this.ChBSuitableEmployees_CheckedChanged);
+            this.ChBSuitableEmployees.CheckedChanged += new System.EventHandler(this.UpdateEmployeeFilter);
             // 
             // RBEmployeeWOutPosition
             // 
@@ -204,7 +232,7 @@ namespace CompetenceMatrix.Forms
             this.RBEmployeeWOutPosition.TabStop = true;
             this.RBEmployeeWOutPosition.Text = "Сотрудники без должности";
             this.RBEmployeeWOutPosition.UseVisualStyleBackColor = true;
-            this.RBEmployeeWOutPosition.CheckedChanged += new System.EventHandler(this.RadioButtonsCheckedChanged);
+            this.RBEmployeeWOutPosition.CheckedChanged += new System.EventHandler(this.UpdateEmployeeFilter);
             // 
             // RBAllEmployee
             // 
@@ -217,7 +245,7 @@ namespace CompetenceMatrix.Forms
             this.RBAllEmployee.TabStop = true;
             this.RBAllEmployee.Text = "Все сотрудники";
             this.RBAllEmployee.UseVisualStyleBackColor = true;
-            this.RBAllEmployee.CheckedChanged += new System.EventHandler(this.RadioButtonsCheckedChanged);
+            this.RBAllEmployee.CheckedChanged += new System.EventHandler(this.UpdateEmployeeFilter);
             // 
             // label5
             // 
@@ -239,29 +267,11 @@ namespace CompetenceMatrix.Forms
             this.label6.TabIndex = 25;
             this.label6.Text = "Выбор сотрудников";
             // 
-            // EmployeeName
+            // EmployeeID
             // 
-            this.EmployeeName.FillWeight = 93.04813F;
-            this.EmployeeName.HeaderText = "Сотрудник";
-            this.EmployeeName.MinimumWidth = 6;
-            this.EmployeeName.Name = "EmployeeName";
-            // 
-            // Position
-            // 
-            this.Position.HeaderText = "Должность";
-            this.Position.MinimumWidth = 6;
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            // 
-            // IsEmployeeSelected
-            // 
-            this.IsEmployeeSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IsEmployeeSelected.HeaderText = "Включить в матрицу";
-            this.IsEmployeeSelected.MinimumWidth = 6;
-            this.IsEmployeeSelected.Name = "IsEmployeeSelected";
-            this.IsEmployeeSelected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsEmployeeSelected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.IsEmployeeSelected.Width = 107;
+            this.EmployeeID.HeaderText = "ID Сотрудника";
+            this.EmployeeID.MinimumWidth = 6;
+            this.EmployeeID.Name = "EmployeeID";
             // 
             // FormConfigurationMatrix
             // 
@@ -311,5 +321,6 @@ namespace CompetenceMatrix.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEmployeeSelected;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
     }
 }

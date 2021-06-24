@@ -85,8 +85,7 @@
     <Compile Include="Forms\FormAddingModel.Designer.cs">
       <DependentUpon>FormAddingModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface\ICompetence.cs" />
-    <Compile Include="Interface\ICompetenceModel.cs" />
+    <Compile Include="ImplementationLogic\MatrixCompetence.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\CompetenceMatrixContext.cs" />
