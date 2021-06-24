@@ -30,7 +30,6 @@ namespace CompetenceMatrix
         private void InitializeComponent()
         {
             this.GridModelList = new System.Windows.Forms.DataGridView();
-            this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnShowWorker = new System.Windows.Forms.Button();
             this.BtnPositionShow = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,6 +43,7 @@ namespace CompetenceMatrix
             this.BtnMatixConstruct = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.GridMatrixView = new System.Windows.Forms.DataGridView();
+            this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridModelList)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,12 +65,6 @@ namespace CompetenceMatrix
             this.GridModelList.RowTemplate.Height = 24;
             this.GridModelList.Size = new System.Drawing.Size(298, 594);
             this.GridModelList.TabIndex = 5;
-            // 
-            // ModelName
-            // 
-            this.ModelName.HeaderText = "Модели компетнций";
-            this.ModelName.MinimumWidth = 6;
-            this.ModelName.Name = "ModelName";
             // 
             // BtnShowWorker
             // 
@@ -202,13 +196,22 @@ namespace CompetenceMatrix
             this.GridMatrixView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridMatrixView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridMatrixView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridMatrixView.Location = new System.Drawing.Point(594, 12);
             this.GridMatrixView.Name = "GridMatrixView";
+            this.GridMatrixView.ReadOnly = true;
             this.GridMatrixView.RowHeadersWidth = 51;
             this.GridMatrixView.RowTemplate.Height = 24;
             this.GridMatrixView.Size = new System.Drawing.Size(623, 594);
             this.GridMatrixView.TabIndex = 12;
+            // 
+            // ModelName
+            // 
+            this.ModelName.HeaderText = "Модели компетнций";
+            this.ModelName.MinimumWidth = 6;
+            this.ModelName.Name = "ModelName";
+            this.ModelName.ReadOnly = true;
             // 
             // MainForm
             // 

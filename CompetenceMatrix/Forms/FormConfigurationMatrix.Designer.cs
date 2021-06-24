@@ -29,54 +29,58 @@ namespace CompetenceMatrix.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.GridEmployeeSelect = new System.Windows.Forms.DataGridView();
+            this.CBPositionName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnBuildMatrix = new System.Windows.Forms.Button();
+            this.BtnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TBFilter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ChBSuitableEmployees = new System.Windows.Forms.CheckBox();
+            this.RBEmployeeWOutPosition = new System.Windows.Forms.RadioButton();
+            this.RBAllEmployee = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEmployeeSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.GridEmployeeSelect)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // GridEmployeeSelect
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 153);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(884, 402);
-            this.dataGridView1.TabIndex = 0;
+            this.GridEmployeeSelect.AllowUserToAddRows = false;
+            this.GridEmployeeSelect.AllowUserToDeleteRows = false;
+            this.GridEmployeeSelect.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridEmployeeSelect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridEmployeeSelect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EmployeeName,
+            this.Position,
+            this.IsEmployeeSelected});
+            this.GridEmployeeSelect.Location = new System.Drawing.Point(13, 153);
+            this.GridEmployeeSelect.Name = "GridEmployeeSelect";
+            this.GridEmployeeSelect.RowHeadersWidth = 51;
+            this.GridEmployeeSelect.RowTemplate.Height = 24;
+            this.GridEmployeeSelect.Size = new System.Drawing.Size(884, 402);
+            this.GridEmployeeSelect.TabIndex = 0;
             // 
-            // comboBox1
+            // CBPositionName
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(121, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(251, 30);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.CBPositionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CBPositionName.FormattingEnabled = true;
+            this.CBPositionName.Location = new System.Drawing.Point(121, 12);
+            this.CBPositionName.Name = "CBPositionName";
+            this.CBPositionName.Size = new System.Drawing.Size(251, 30);
+            this.CBPositionName.TabIndex = 1;
+            this.CBPositionName.SelectedIndexChanged += new System.EventHandler(this.CBPositionName_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -100,51 +104,43 @@ namespace CompetenceMatrix.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.BtnBuildMatrix);
+            this.panel1.Controls.Add(this.BtnExit);
             this.panel1.Location = new System.Drawing.Point(711, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(175, 93);
             this.panel1.TabIndex = 19;
             // 
-            // button6
+            // BtnBuildMatrix
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(12, 52);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(150, 34);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Добавить";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BtnBuildMatrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnBuildMatrix.Location = new System.Drawing.Point(12, 52);
+            this.BtnBuildMatrix.Name = "BtnBuildMatrix";
+            this.BtnBuildMatrix.Size = new System.Drawing.Size(150, 34);
+            this.BtnBuildMatrix.TabIndex = 9;
+            this.BtnBuildMatrix.Text = "Построить";
+            this.BtnBuildMatrix.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // BtnExit
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 34);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Выйти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnExit.Location = new System.Drawing.Point(12, 10);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(150, 34);
+            this.BtnExit.TabIndex = 10;
+            this.BtnExit.Text = "Выйти";
+            this.BtnExit.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.TBFilter);
+            this.panel2.Controls.Add(this.CBPositionName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(13, 28);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(385, 92);
             this.panel2.TabIndex = 21;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(93, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 28);
-            this.textBox1.TabIndex = 15;
             // 
             // label1
             // 
@@ -156,6 +152,15 @@ namespace CompetenceMatrix.Forms
             this.label1.TabIndex = 16;
             this.label1.Text = "Фильтр:";
             // 
+            // TBFilter
+            // 
+            this.TBFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TBFilter.Location = new System.Drawing.Point(93, 54);
+            this.TBFilter.Name = "TBFilter";
+            this.TBFilter.Size = new System.Drawing.Size(278, 28);
+            this.TBFilter.TabIndex = 15;
+            this.TBFilter.TextChanged += new System.EventHandler(this.TBFilter_TextChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -166,68 +171,53 @@ namespace CompetenceMatrix.Forms
             this.label3.TabIndex = 22;
             this.label3.Text = "Должность";
             // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 93.04813F;
-            this.Column1.HeaderText = "Сотрудник";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Column2.HeaderText = "Включить в матрицу";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column2.Width = 171;
-            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.ChBSuitableEmployees);
+            this.panel3.Controls.Add(this.RBEmployeeWOutPosition);
+            this.panel3.Controls.Add(this.RBAllEmployee);
             this.panel3.Location = new System.Drawing.Point(404, 28);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(301, 92);
             this.panel3.TabIndex = 23;
             // 
-            // radioButton1
+            // ChBSuitableEmployees
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(12, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(174, 28);
-            this.radioButton1.TabIndex = 17;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Все сотрудники";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.ChBSuitableEmployees.AutoSize = true;
+            this.ChBSuitableEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChBSuitableEmployees.Location = new System.Drawing.Point(12, 59);
+            this.ChBSuitableEmployees.Name = "ChBSuitableEmployees";
+            this.ChBSuitableEmployees.Size = new System.Drawing.Size(256, 28);
+            this.ChBSuitableEmployees.TabIndex = 19;
+            this.ChBSuitableEmployees.Text = "Подходящие сотрудники";
+            this.ChBSuitableEmployees.UseVisualStyleBackColor = true;
+            this.ChBSuitableEmployees.CheckedChanged += new System.EventHandler(this.ChBSuitableEmployees_CheckedChanged);
             // 
-            // radioButton2
+            // RBEmployeeWOutPosition
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(12, 31);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(281, 28);
-            this.radioButton2.TabIndex = 18;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Сотрудники без должности";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.RBEmployeeWOutPosition.AutoSize = true;
+            this.RBEmployeeWOutPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RBEmployeeWOutPosition.Location = new System.Drawing.Point(12, 31);
+            this.RBEmployeeWOutPosition.Name = "RBEmployeeWOutPosition";
+            this.RBEmployeeWOutPosition.Size = new System.Drawing.Size(281, 28);
+            this.RBEmployeeWOutPosition.TabIndex = 18;
+            this.RBEmployeeWOutPosition.TabStop = true;
+            this.RBEmployeeWOutPosition.Text = "Сотрудники без должности";
+            this.RBEmployeeWOutPosition.UseVisualStyleBackColor = true;
+            this.RBEmployeeWOutPosition.CheckedChanged += new System.EventHandler(this.RadioButtonsCheckedChanged);
             // 
-            // checkBox1
+            // RBAllEmployee
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(12, 59);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(256, 28);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "Подходящие сотрудники";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.RBAllEmployee.AutoSize = true;
+            this.RBAllEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RBAllEmployee.Location = new System.Drawing.Point(12, 3);
+            this.RBAllEmployee.Name = "RBAllEmployee";
+            this.RBAllEmployee.Size = new System.Drawing.Size(174, 28);
+            this.RBAllEmployee.TabIndex = 17;
+            this.RBAllEmployee.TabStop = true;
+            this.RBAllEmployee.Text = "Все сотрудники";
+            this.RBAllEmployee.UseVisualStyleBackColor = true;
+            this.RBAllEmployee.CheckedChanged += new System.EventHandler(this.RadioButtonsCheckedChanged);
             // 
             // label5
             // 
@@ -249,6 +239,30 @@ namespace CompetenceMatrix.Forms
             this.label6.TabIndex = 25;
             this.label6.Text = "Выбор сотрудников";
             // 
+            // EmployeeName
+            // 
+            this.EmployeeName.FillWeight = 93.04813F;
+            this.EmployeeName.HeaderText = "Сотрудник";
+            this.EmployeeName.MinimumWidth = 6;
+            this.EmployeeName.Name = "EmployeeName";
+            // 
+            // Position
+            // 
+            this.Position.HeaderText = "Должность";
+            this.Position.MinimumWidth = 6;
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            // 
+            // IsEmployeeSelected
+            // 
+            this.IsEmployeeSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.IsEmployeeSelected.HeaderText = "Включить в матрицу";
+            this.IsEmployeeSelected.MinimumWidth = 6;
+            this.IsEmployeeSelected.Name = "IsEmployeeSelected";
+            this.IsEmployeeSelected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsEmployeeSelected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IsEmployeeSelected.Width = 107;
+            // 
             // FormConfigurationMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,11 +274,11 @@ namespace CompetenceMatrix.Forms
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.GridEmployeeSelect);
             this.Controls.Add(this.panel2);
             this.Name = "FormConfigurationMatrix";
             this.Text = "FormConfigurationMatrix";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridEmployeeSelect)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -277,24 +291,25 @@ namespace CompetenceMatrix.Forms
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView GridEmployeeSelect;
+        private System.Windows.Forms.ComboBox CBPositionName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
+        private System.Windows.Forms.Button BtnBuildMatrix;
+        private System.Windows.Forms.Button BtnExit;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBFilter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton RBAllEmployee;
+        private System.Windows.Forms.CheckBox ChBSuitableEmployees;
+        private System.Windows.Forms.RadioButton RBEmployeeWOutPosition;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEmployeeSelected;
     }
 }

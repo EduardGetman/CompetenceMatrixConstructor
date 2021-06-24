@@ -12,5 +12,6 @@ namespace CompetenceMatrix.entity
         public int Level { get; set; }
         public Position Position { get; set; }
         public Competence Competence { get; set; }
+
     }
 }
