@@ -88,6 +88,10 @@
     <Compile Include="ImplementationLogic\MatrixCompetence.cs" />
     <Compile Include="Migrations\202106252003337_Mig.cs" />
     <Compile Include="Migrations\202106252003337_Mig.Designer.cs" />
+    <Compile Include="Migrations\202106252119506_EmployeeUpdate1.cs" />
+    <Compile Include="Migrations\202106252119506_EmployeeUpdate1.Designer.cs">
+      <DependentUpon>202106252119506_EmployeeUpdate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +106,9 @@
       <DependentUpon>FormAddingModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106252003337_Mig.resx" />
+    <EmbeddedResource Include="Migrations\202106252119506_EmployeeUpdate1.resx">
+      <DependentUpon>202106252119506_EmployeeUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

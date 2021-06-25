@@ -37,7 +37,7 @@ namespace CompetenceMatrix.Forms
                 {
                     if (!ChBSuitableEmployees.Checked || SelectedPosition.IsEmployeeSuitable(item))
                     {
-                        if (RBAllEmployee.Checked || !item.HoldPosition )
+                        if (RBAllEmployee.Checked || !item.HoldPosition() )
                         {
                             result.Add(item);
                         }
@@ -114,7 +114,7 @@ namespace CompetenceMatrix.Forms
         {
             foreach (var item in employees)
             {
-               GridEmployeeSelect.Rows.Add(item.FullName, item.PositionName, false, item.Id);
+               GridEmployeeSelect.Rows.Add(item.FullName, item.PositionName(), false, item.Id);
             }
         }
 
