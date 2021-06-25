@@ -10,6 +10,7 @@ namespace CompetenceMatrix.entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+        [Required]
         public String FullName { get; set; }
         // Я так понял здесь что-то наебнулось так как знаний должнобыть много.
         // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId

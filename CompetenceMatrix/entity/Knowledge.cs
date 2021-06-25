@@ -9,8 +9,11 @@ namespace CompetenceMatrix.entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+        [Required]
         public int Level { get; set; }
+        [Required]
         public Competence Competence { get; set; }
+        [Required]
         public Employee Employee { get; set; }
     }
 }
