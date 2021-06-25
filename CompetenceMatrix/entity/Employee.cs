@@ -13,7 +13,7 @@ namespace CompetenceMatrix.entity
         public String FullName { get; set; }
         // Я так понял здесь что-то наебнулось так как знаний должнобыть много.
         // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId
-        //public Knowledge Knowledge { get; set; }
+        public Knowledge Knowledge { get; set; }
 
         //Возвращает true, если Position не null TODO: Реализовать свойство get
         public bool HoldPosition { get => throw new NotImplementedException(); }

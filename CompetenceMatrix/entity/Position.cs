@@ -13,7 +13,7 @@ namespace CompetenceMatrix.entity
         public String Name { get; set; }
         
         public List<Requirement> Requirements { get; set; }
-        //public List<Employee> Employees { get; set; }
+        public List<Employee> Employees { get; set; }
 
         // Возвращает true если работник подходит по требованиям
         public bool IsEmployeeSuitable(Employee employee)
