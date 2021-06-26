@@ -1,7 +1,7 @@
 ﻿
 namespace CompetenceMatrix.Forms
 {
-    partial class FormAddingEmployee
+    partial class FormEmployeeConstructor
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@ namespace CompetenceMatrix.Forms
             this.BtnAddModel.Name = "BtnAddModel";
             this.BtnAddModel.Size = new System.Drawing.Size(150, 34);
             this.BtnAddModel.TabIndex = 9;
-            this.BtnAddModel.Text = "Добавить";
+            this.BtnAddModel.Text = "Сохрнить";
             this.BtnAddModel.UseVisualStyleBackColor = true;
             this.BtnAddModel.Click += new System.EventHandler(this.BtnAddModel_Click);
             // 
@@ -241,7 +241,7 @@ namespace CompetenceMatrix.Forms
             this.label7.TabIndex = 21;
             this.label7.Text = "Заполнение компетенций";
             // 
-            // FormAddingEmployee
+            // FormEmployeeConstructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -254,7 +254,7 @@ namespace CompetenceMatrix.Forms
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.GridCompetenceList);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAddingEmployee";
+            this.Name = "FormEmployeeConstructor";
             this.Text = "FormAddingModel";
             ((System.ComponentModel.ISupportInitialize)(this.GridCompetenceList)).EndInit();
             this.panel1.ResumeLayout(false);

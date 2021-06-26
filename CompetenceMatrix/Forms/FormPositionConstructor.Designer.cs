@@ -1,7 +1,7 @@
 ﻿
 namespace CompetenceMatrix.Forms
 {
-    partial class FormAddingPositiom
+    partial class FormPositionConstructor
     {
         /// <summary>
         /// Required designer variable.
@@ -68,6 +68,7 @@ namespace CompetenceMatrix.Forms
             this.GridCompetenceList.RowTemplate.Height = 24;
             this.GridCompetenceList.Size = new System.Drawing.Size(640, 530);
             this.GridCompetenceList.TabIndex = 0;
+            this.GridCompetenceList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCompetenceList_CellEndEdit);
             // 
             // CompetenceColumn
             // 
@@ -90,7 +91,7 @@ namespace CompetenceMatrix.Forms
             this.BtnAddModel.Name = "BtnAddModel";
             this.BtnAddModel.Size = new System.Drawing.Size(150, 34);
             this.BtnAddModel.TabIndex = 9;
-            this.BtnAddModel.Text = "Добавить";
+            this.BtnAddModel.Text = "Сохранить";
             this.BtnAddModel.UseVisualStyleBackColor = true;
             this.BtnAddModel.Click += new System.EventHandler(this.BtnAddModel_Click);
             // 
@@ -241,7 +242,7 @@ namespace CompetenceMatrix.Forms
             this.label7.TabIndex = 21;
             this.label7.Text = "Заполнение компетенций";
             // 
-            // FormAddingPositiom
+            // FormPositionConstructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -254,7 +255,7 @@ namespace CompetenceMatrix.Forms
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.GridCompetenceList);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAddingPositiom";
+            this.Name = "FormPositionConstructor";
             this.Text = "FormAddingModel";
             ((System.ComponentModel.ISupportInitialize)(this.GridCompetenceList)).EndInit();
             this.panel1.ResumeLayout(false);

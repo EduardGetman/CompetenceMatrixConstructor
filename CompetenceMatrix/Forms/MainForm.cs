@@ -17,6 +17,10 @@ namespace CompetenceMatrix
         public List<Position> Positions { get; set; }
         public List<Competence> competences { get; set; }
 
+        Position SelecetedPosition => Positions[GridModelList.SelectedCells[0].RowIndex];
+
+        Employee SelecetedEmployee => Employees[GridModelList.SelectedCells[0].RowIndex];
+
         public MainForm()
         {
             InitializeComponent();
@@ -53,11 +57,11 @@ namespace CompetenceMatrix
             }
             if (EmployeesSeleted == true)
             {
-                form = new FormAddingEmployee(competences.ToArray());
+                form = new FormEmployeeConstructor(competences.ToArray());
             }
             else
             {
-                form = new FormAddingPosition(competences.ToArray());
+                form = new FormPositionConstructor(competences.ToArray());
             }
             form.Show();
             Hide();
@@ -65,12 +69,38 @@ namespace CompetenceMatrix
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-
+            if (EmployeesSeleted is null || GridModelList.SelectedCells is null)
+            {
+                MessageBox.Show("Выберите должность или сотрудника прежде чем удлить её",
+                    "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (EmployeesSeleted == true)
+            {
+                Employee.DeleteEmployee(SelecetedEmployee.Id);
+            }
+            else
+            {
+                Employee.DeleteEmployee(SelecetedPosition.Id);
+            }
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-
+            if (EmployeesSeleted is null || GridModelList.SelectedCells is null)
+            {
+                MessageBox.Show("Выберите должность или сотрудника прежде чем изменить её",
+                    "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (EmployeesSeleted == true)
+            {
+                Employee.DeleteEmployee(SelecetedEmployee.Id);
+            }
+            else
+            {
+                Employee.DeleteEmployee(SelecetedPosition.Id);
+            }
         }
 
         private void GridModelList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -117,7 +147,7 @@ namespace CompetenceMatrix
 
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible)
+            if (Visible)
             {
                 UpdateGridModelList();
             }
@@ -127,11 +157,11 @@ namespace CompetenceMatrix
         {
             if (EmployeesSeleted == true)
             {
-                SetModelToGridMatrixView(Employees[GridModelList.SelectedCells[0].RowIndex]);
+                SetModelToGridMatrixView(SelecetedEmployee);
             }
             else
             {
-                SetModelToGridMatrixView(Positions[GridModelList.SelectedCells[0].RowIndex]);
+                SetModelToGridMatrixView(SelecetedPosition);
             }
         }
     }
