@@ -19,6 +19,7 @@ namespace CompetenceMatrix.Forms
         List<Competence> competences;
         public FormPositionConstructor(Competence[] competences)
         {
+            this.competences = new List<Competence>();
             InitializeComponent();
             this.competences.AddRange(competences);
             AddCompetencesToCompetenceColumn(competences);
@@ -39,7 +40,8 @@ namespace CompetenceMatrix.Forms
         }
         private void NUDCountCompetence_ValueChanged(object sender, EventArgs e)
         {
-            GridCompetenceList.RowCount = Convert.ToInt32(NUDCountCompetence.Value);
+            GridCompetenceList.RowCount = Convert.ToInt32(NUDCountCompetence.Value) > 0?
+                Convert.ToInt32(NUDCountCompetence.Value): 1;
         }
 
         private void AddCompetence_Click(object sender, EventArgs e)
@@ -68,14 +70,30 @@ namespace CompetenceMatrix.Forms
 
         private void BtnAddModel_Click(object sender, EventArgs e)
         {
-            if (!AllCellsLevelColumnIsNumber())
+            if (GridCompetenceList.RowCount == 0)
             {
+                MessageBox.Show("Заполните таблицу компетенций, а затем ещё раз нажмите на кнопку сохранить",
+                   "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            Position position = this.position is null ? AddPosition() : UpdatePosition();
-            
+            if (!AllCellsLevelColumnIsNumber())
+            {
+                MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!" +
+                   " Внесите изменения в поле уровень владения, а затем ещё раз нажмите на кнопку сохранить",
+                   "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             MainForm form = (MainForm)Application.OpenForms[0];
-            form.Positions.Add(position);
+            if (this.position is null)
+            {
+                Position position = AddPosition();
+                form.Positions.Add(position);
+            }
+            else
+            {
+                Position position = UpdatePosition();
+                form.Positions[form.Positions.IndexOf(this.position)] = position;
+            }        
             form.Show();
             Close();
         }
@@ -134,10 +152,7 @@ namespace CompetenceMatrix.Forms
         }
 
         private bool AllCellsLevelColumnIsNumber()
-        {
-            MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!" +
-                " Внесите изменения в поле уровень владения, а затем ещё раз нажмите на кнопку сохранить",
-                "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        {            
             for (int i = 0; i < GridCompetenceList.RowCount; i++)
             {
                 if (!IsNumber(GridCompetenceList[1,i].Value.ToString()))

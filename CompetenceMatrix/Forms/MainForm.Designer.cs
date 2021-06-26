@@ -188,6 +188,7 @@ namespace CompetenceMatrix
             this.BtnMatixConstruct.TabIndex = 3;
             this.BtnMatixConstruct.Text = "Матрицу для должности";
             this.BtnMatixConstruct.UseVisualStyleBackColor = true;
+            this.BtnMatixConstruct.Click += new System.EventHandler(this.BtnMatixConstruct_Click);
             // 
             // label3
             // 

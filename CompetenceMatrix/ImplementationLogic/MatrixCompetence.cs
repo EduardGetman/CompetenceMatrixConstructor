@@ -12,13 +12,37 @@ namespace CompetenceMatrix.ImplementationLogic
     public class MatrixCompetence
     {
         Position position;
-        List<Employee> employees;
+        Employee[] SuitableEmployees;
+        Employee[] UnsuitableEmployees;
+        Employee MostSuitableEmployees;
+        Employee BestIndicators;
+        Employee AverageIndicators;
         DataTable DataTable { get => throw new NotImplementedException(); }
         public MatrixCompetence(Position position, Employee[] employees)
         {
             this.position = position;
-            this.employees = new List<Employee>();
-            this.employees.AddRange(employees);
+            SuitableEmployees = getSuitableEmployees(employees);
+
+        }
+        private Employee[] getSuitableEmployees(Employee[] employees)
+        {
+            throw new NotImplementedException();
+        }
+        private Employee[] getMostSuitableEmployees(Employee[] employees)
+        {
+            throw new NotImplementedException();
+        }
+        private Employee[] getUnsuitableEmployees(Employee[] employees)
+        {
+            throw new NotImplementedException();
+        }
+        private Employee[] getBestIndicators(Employee[] employees)
+        {
+            throw new NotImplementedException();
+        }
+        private Employee[] getAverageIndicators(Employee[] employees)
+        {
+            throw new NotImplementedException();
         }
     }
 }
