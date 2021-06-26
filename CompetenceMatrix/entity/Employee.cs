@@ -20,6 +20,7 @@ namespace CompetenceMatrix.entity
         public Knowledge Knowledge { get; set; }
         public Position Position { get; set; }
 
+        public Knowledge[] knowledges { get; }
         //Возвращает true, если Position не null TODO: Реализовать свойство get
         //Реализовано
         public bool HoldPosition()
@@ -62,6 +63,14 @@ namespace CompetenceMatrix.entity
             context.Employees.Add(newEmployee);
             context.SaveChanges();
             return newEmployee;
+        }
+        public static Employee UpdateEmployee(string name, Knowledge[] knowledges, Position position)
+        {
+            throw new NotImplementedException();
+        }
+        public static bool DeleteEmployee(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

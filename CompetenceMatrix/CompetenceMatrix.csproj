@@ -85,11 +85,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddingPositiom.cs">
+    <Compile Include="Forms\FormAddingPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddingPositiom.Designer.cs">
-      <DependentUpon>FormAddingPositiom.cs</DependentUpon>
+    <Compile Include="Forms\FormAddingPosition.Designer.cs">
+      <DependentUpon>FormAddingPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="ImplementationLogic\MatrixCompetence.cs" />
     <Compile Include="Migrations\202106252003337_Mig.cs" />
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddingPositiom.resx">
-      <DependentUpon>FormAddingPositiom.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAddingPosition.resx">
+      <DependentUpon>FormAddingPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106252003337_Mig.resx" />
     <EmbeddedResource Include="Migrations\202106252125317_EmployeeUpdate2.resx">

@@ -30,6 +30,7 @@ namespace CompetenceMatrix
         private void InitializeComponent()
         {
             this.GridModelList = new System.Windows.Forms.DataGridView();
+            this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnShowWorker = new System.Windows.Forms.Button();
             this.BtnPositionShow = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,7 +44,6 @@ namespace CompetenceMatrix
             this.BtnMatixConstruct = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.GridMatrixView = new System.Windows.Forms.DataGridView();
-            this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridModelList)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,6 +65,14 @@ namespace CompetenceMatrix
             this.GridModelList.RowTemplate.Height = 24;
             this.GridModelList.Size = new System.Drawing.Size(298, 594);
             this.GridModelList.TabIndex = 5;
+            this.GridModelList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridModelList_CellContentClick);
+            // 
+            // ModelName
+            // 
+            this.ModelName.HeaderText = "Модели компетнций";
+            this.ModelName.MinimumWidth = 6;
+            this.ModelName.Name = "ModelName";
+            this.ModelName.ReadOnly = true;
             // 
             // BtnShowWorker
             // 
@@ -206,13 +214,6 @@ namespace CompetenceMatrix
             this.GridMatrixView.Size = new System.Drawing.Size(623, 594);
             this.GridMatrixView.TabIndex = 12;
             // 
-            // ModelName
-            // 
-            this.ModelName.HeaderText = "Модели компетнций";
-            this.ModelName.MinimumWidth = 6;
-            this.ModelName.Name = "ModelName";
-            this.ModelName.ReadOnly = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -228,6 +229,7 @@ namespace CompetenceMatrix
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.GridModelList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

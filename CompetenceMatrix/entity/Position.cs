@@ -40,5 +40,13 @@ namespace CompetenceMatrix.entity
             context.SaveChanges();
             return newPosition;
         }
+        public static Position UpdatePosition(string name, Requirement[] knowledges)
+        {
+            throw new NotImplementedException();
+        }
+        public static bool DeletePosition(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
