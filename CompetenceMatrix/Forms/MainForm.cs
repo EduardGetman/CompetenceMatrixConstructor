@@ -8,12 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CompetenceMatrix.ImplementationLogic;
+using CompetenceMatrix.entity;
 
 namespace CompetenceMatrix
 {
     public partial class MainForm : Form
     {
+
         public MatrixCompetence MatrixCompetence{ get; set; }
+        public List<Employee> Employees { get; set; }
+        public List<Position> Positions { get; set; }
+
         public MainForm()
         {
             InitializeComponent();

@@ -52,5 +52,16 @@ namespace CompetenceMatrix.entity
             CompetenceMatrixContext context = new CompetenceMatrixContext();
             return context.Knowledges.Where(k => k.Competence.Id == CompetenceId).FirstOrDefault();
         }
+
+        //Создаёт новый окземпляр сотрудника и возвращает его. Добавляет нового сотрудника в базу данных
+        //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
+        public static Employee addEmployee(string name)
+        {
+            Employee newEmployee = new Employee() { FullName = name };
+            CompetenceMatrixContext context = new CompetenceMatrixContext();
+            context.Employees.Add(newEmployee);
+            context.SaveChanges();
+            return newEmployee;
+        }
     }
 }

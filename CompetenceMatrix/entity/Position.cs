@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompetenceMatrix.repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +28,17 @@ namespace CompetenceMatrix.entity
                 }
             }
             return true;
+        }
+
+        //Создаёт новый окземпляр должности и возвращает его. Добавляет новоую должность в базу данных
+        //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
+        public static Position addPosition(string name)
+        {
+            Position newPosition = new Position() { Name = name};
+            CompetenceMatrixContext context = new CompetenceMatrixContext();
+            context.Positions.Add(newPosition);
+            context.SaveChanges();
+            return newPosition;
         }
     }
 }

@@ -67,6 +67,12 @@
     <Compile Include="entity\Knowledge.cs" />
     <Compile Include="entity\Position.cs" />
     <Compile Include="entity\Requirement.cs" />
+    <Compile Include="Forms\FormAddingEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddingEmployee.Designer.cs">
+      <DependentUpon>FormAddingEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormConfigurationMatrix.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,11 +85,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddingModel.cs">
+    <Compile Include="Forms\FormAddingPositiom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddingModel.Designer.cs">
-      <DependentUpon>FormAddingModel.cs</DependentUpon>
+    <Compile Include="Forms\FormAddingPositiom.Designer.cs">
+      <DependentUpon>FormAddingPositiom.cs</DependentUpon>
     </Compile>
     <Compile Include="ImplementationLogic\MatrixCompetence.cs" />
     <Compile Include="Migrations\202106252003337_Mig.cs" />
@@ -96,14 +102,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\CompetenceMatrixContext.cs" />
+    <EmbeddedResource Include="Forms\FormAddingEmployee.resx">
+      <DependentUpon>FormAddingEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConfigurationMatrix.resx">
       <DependentUpon>FormConfigurationMatrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddingModel.resx">
-      <DependentUpon>FormAddingModel.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAddingPositiom.resx">
+      <DependentUpon>FormAddingPositiom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106252003337_Mig.resx" />
     <EmbeddedResource Include="Migrations\202106252125317_EmployeeUpdate2.resx">

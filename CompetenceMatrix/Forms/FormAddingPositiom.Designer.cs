@@ -1,7 +1,7 @@
 ﻿
 namespace CompetenceMatrix.Forms
 {
-    partial class FormAddingModel
+    partial class FormAddingPositiom
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace CompetenceMatrix.Forms
         private void InitializeComponent()
         {
             this.GridCompetenceList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CompetenceColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Skill = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAddModel = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@ namespace CompetenceMatrix.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AddCompetence = new System.Windows.Forms.Button();
             this.TBNameCpmpetence = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@ namespace CompetenceMatrix.Forms
             this.GridCompetenceList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridCompetenceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridCompetenceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.CompetenceColumn,
             this.Skill});
             this.GridCompetenceList.Location = new System.Drawing.Point(12, 251);
             this.GridCompetenceList.Name = "GridCompetenceList";
@@ -69,13 +69,13 @@ namespace CompetenceMatrix.Forms
             this.GridCompetenceList.Size = new System.Drawing.Size(640, 530);
             this.GridCompetenceList.TabIndex = 0;
             // 
-            // Column1
+            // CompetenceColumn
             // 
-            this.Column1.HeaderText = "Компетенция";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CompetenceColumn.HeaderText = "Компетенция";
+            this.CompetenceColumn.MinimumWidth = 6;
+            this.CompetenceColumn.Name = "CompetenceColumn";
+            this.CompetenceColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CompetenceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Skill
             // 
@@ -92,6 +92,7 @@ namespace CompetenceMatrix.Forms
             this.BtnAddModel.TabIndex = 9;
             this.BtnAddModel.Text = "Добавить";
             this.BtnAddModel.UseVisualStyleBackColor = true;
+            this.BtnAddModel.Click += new System.EventHandler(this.BtnAddModel_Click);
             // 
             // BtnExit
             // 
@@ -102,6 +103,7 @@ namespace CompetenceMatrix.Forms
             this.BtnExit.TabIndex = 10;
             this.BtnExit.Text = "Выйти";
             this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // panel1
             // 
@@ -130,13 +132,14 @@ namespace CompetenceMatrix.Forms
             this.NUDCountCompetence.Name = "NUDCountCompetence";
             this.NUDCountCompetence.Size = new System.Drawing.Size(199, 28);
             this.NUDCountCompetence.TabIndex = 16;
+            this.NUDCountCompetence.ValueChanged += new System.EventHandler(this.NUDCountCompetence_ValueChanged);
             // 
             // TBNameModel
             // 
             this.TBNameModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TBNameModel.Location = new System.Drawing.Point(73, 47);
+            this.TBNameModel.Location = new System.Drawing.Point(150, 47);
             this.TBNameModel.Name = "TBNameModel";
-            this.TBNameModel.Size = new System.Drawing.Size(371, 28);
+            this.TBNameModel.Size = new System.Drawing.Size(294, 28);
             this.TBNameModel.TabIndex = 15;
             // 
             // label1
@@ -145,9 +148,9 @@ namespace CompetenceMatrix.Forms
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(13, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.Size = new System.Drawing.Size(139, 20);
             this.label1.TabIndex = 14;
-            this.label1.Text = "ФИО:";
+            this.label1.Text = "Наименование:";
             // 
             // label2
             // 
@@ -165,9 +168,9 @@ namespace CompetenceMatrix.Forms
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(140, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(236, 20);
+            this.label3.Size = new System.Drawing.Size(231, 20);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Информация о сотруднике";
+            this.label3.Text = "Информация о должности";
             // 
             // label4
             // 
@@ -181,7 +184,7 @@ namespace CompetenceMatrix.Forms
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.AddCompetence);
             this.panel3.Controls.Add(this.TBNameCpmpetence);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(12, 158);
@@ -189,15 +192,16 @@ namespace CompetenceMatrix.Forms
             this.panel3.Size = new System.Drawing.Size(640, 59);
             this.panel3.TabIndex = 19;
             // 
-            // button2
+            // AddCompetence
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(477, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 34);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AddCompetence.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddCompetence.Location = new System.Drawing.Point(477, 12);
+            this.AddCompetence.Name = "AddCompetence";
+            this.AddCompetence.Size = new System.Drawing.Size(150, 34);
+            this.AddCompetence.TabIndex = 21;
+            this.AddCompetence.Text = "Добавить";
+            this.AddCompetence.UseVisualStyleBackColor = true;
+            this.AddCompetence.Click += new System.EventHandler(this.AddCompetence_Click);
             // 
             // TBNameCpmpetence
             // 
@@ -237,7 +241,7 @@ namespace CompetenceMatrix.Forms
             this.label7.TabIndex = 21;
             this.label7.Text = "Заполнение компетенций";
             // 
-            // FormAddingModel
+            // FormAddingPositiom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -250,7 +254,7 @@ namespace CompetenceMatrix.Forms
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.GridCompetenceList);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAddingModel";
+            this.Name = "FormAddingPositiom";
             this.Text = "FormAddingModel";
             ((System.ComponentModel.ISupportInitialize)(this.GridCompetenceList)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -281,9 +285,9 @@ namespace CompetenceMatrix.Forms
         private System.Windows.Forms.TextBox TBNameCpmpetence;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Skill;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddCompetence;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CompetenceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Skill;
     }
 }
