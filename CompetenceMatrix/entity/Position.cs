@@ -29,6 +29,17 @@ namespace CompetenceMatrix.entity
             }
             return true;
         }
+        public bool CompetenceIsIncluded(Competence competence)
+        {
+            foreach (var item in Requirements)
+            {
+                if (item.Competence.Id == competence.Id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         //Создаёт новый окземпляр должности и возвращает его. Добавляет новоую должность в базу данных
         //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id

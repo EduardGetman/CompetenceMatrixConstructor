@@ -64,6 +64,18 @@ namespace CompetenceMatrix.entity
             context.SaveChanges();
             return newEmployee;
         }
+
+        public Knowledge GetKnowledgeByCompetence(Competence competence)
+        {
+            foreach (var item in knowledges)
+            {
+                if (item.Competence.Id == competence.Id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         public static Employee UpdateEmployee(string name, Knowledge[] knowledges, Position position)
         {
             throw new NotImplementedException();

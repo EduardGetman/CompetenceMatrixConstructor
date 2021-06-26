@@ -92,6 +92,8 @@
       <DependentUpon>FormPositionConstructor.cs</DependentUpon>
     </Compile>
     <Compile Include="ImplementationLogic\MatrixCompetence.cs" />
+    <Compile Include="ImplementationLogic\ModelCompetence.cs" />
+    <Compile Include="ImplementationLogic\Skill.cs" />
     <Compile Include="Migrations\202106252003337_Mig.cs" />
     <Compile Include="Migrations\202106252003337_Mig.Designer.cs" />
     <Compile Include="Migrations\202106252125317_EmployeeUpdate2.cs" />
