@@ -17,19 +17,22 @@ namespace CompetenceMatrix.Forms
     {
         Position position;
         List<Competence> competences;
+
         public FormPositionConstructor(Competence[] competences)
         {
             // this.competences = new List<Competence>();
-            competences = new CompetenceRepository().findAll().ToArray();
+            this.competences = new CompetenceRepository().findAll();
             InitializeComponent();
             this.competences.AddRange(competences);
             AddCompetencesToCompetenceColumn(competences);
         }
+
         public FormPositionConstructor(Competence[] competences, Position position) : this(competences)
         {
             this.position = position;
             SetPositionToGridCompetenceList(position);
         }
+
         void SetPositionToGridCompetenceList(Position position)
         {
             TBNameCpmpetence.Text = position.Name;
@@ -39,10 +42,12 @@ namespace CompetenceMatrix.Forms
                 GridCompetenceList.Rows.Add(item.Competence.Name, item.Level);
             }
         }
+
         private void NUDCountCompetence_ValueChanged(object sender, EventArgs e)
         {
-            GridCompetenceList.RowCount = Convert.ToInt32(NUDCountCompetence.Value) > 0?
-                Convert.ToInt32(NUDCountCompetence.Value): 1;
+            GridCompetenceList.RowCount = Convert.ToInt32(NUDCountCompetence.Value) > 0
+                ? Convert.ToInt32(NUDCountCompetence.Value)
+                : 1;
         }
 
         private void AddCompetence_Click(object sender, EventArgs e)
@@ -52,10 +57,12 @@ namespace CompetenceMatrix.Forms
                 MessageBox.Show("Заполните поле \"Наименование компетенции\"", "Внимание!",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
             Competence competence = Competence.addCompetence(TBNameCpmpetence.Text);
             competences.Add(competence);
             CompetenceColumn.Items.Add(competence.Name);
         }
+
         private void AddCompetencesToCompetenceColumn(Competence[] competences) =>
             CompetenceColumn.Items.AddRange(GetCompetencesName(competences));
 
@@ -66,6 +73,7 @@ namespace CompetenceMatrix.Forms
             {
                 result.Add(item.Name);
             }
+
             return result.ToArray();
         }
 
@@ -74,17 +82,21 @@ namespace CompetenceMatrix.Forms
             if (GridCompetenceList.RowCount == 0)
             {
                 MessageBox.Show("Заполните таблицу компетенций, а затем ещё раз нажмите на кнопку сохранить",
-                   "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!AllCellsLevelColumnIsNumber())
-            {
-                MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!" +
-                   " Внесите изменения в поле уровень владения, а затем ещё раз нажмите на кнопку сохранить",
-                   "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            MainForm form = (MainForm)Application.OpenForms[0];
+            
+            
+            //TODO не работает оно или другое
+            // if (!AllCellsLevelColumnIsNumber())
+            // {
+            //     MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!" +
+            //                     " Внесите изменения в поле уровень владения, а затем ещё раз нажмите на кнопку сохранить",
+            //         "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //     return;
+            // }
+
+            MainForm form = (MainForm) Application.OpenForms[0];
             if (this.position is null)
             {
                 Position position = AddPosition();
@@ -94,19 +106,30 @@ namespace CompetenceMatrix.Forms
             {
                 Position position = UpdatePosition();
                 form.Positions[form.Positions.IndexOf(this.position)] = position;
-            }        
+            }
+
             form.Show();
             Close();
         }
+//TODO что это делает?
         private Position AddPosition()
         {
             Position position = Position.addPosition(TBNameModel.Text);
             for (int i = 0; i < GridCompetenceList.RowCount; i++)
             {
-                Requirement.addRequirement(GetCompetenceByName(GridCompetenceList[0, i].Value.ToString()), position);
+                // Requirement.addRequirement(GetCompetenceByName(GridCompetenceList[0, i].Value.ToString()), position);
+                RequirementRepository.Save(new Requirement()
+                {
+                    CompetenceId = GetCompetenceByName(GridCompetenceList[0, i].Value.ToString()).Id,
+                    PositionId = position.Id,
+                    Level = 1
+                });
+
             }
+
             return position;
         }
+
         private Position UpdatePosition()
         {
             //TODO
@@ -122,25 +145,28 @@ namespace CompetenceMatrix.Forms
                     return item;
                 }
             }
+
             throw new Exception();
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            MainForm form = (MainForm)Application.OpenForms[0];
+            MainForm form = (MainForm) Application.OpenForms[0];
             form.Show();
             Close();
         }
 
         private void GridCompetenceList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (!IsNumber(GridCompetenceList[e.ColumnIndex,e.RowIndex].Value.ToString()))
-            {
-                MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                GridCompetenceList[e.ColumnIndex, e.RowIndex].Value = "";
-            }
+            //todo не работает оно или другое
+            // if (!IsNumber(GridCompetenceList[e.ColumnIndex, e.RowIndex].Value.ToString()))
+            // {
+            //     MessageBox.Show("Уровень владения компетенцией задаётся положительным числом!", "Внимание!",
+            //         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //     GridCompetenceList[e.ColumnIndex, e.RowIndex].Value = "";
+            // }
         }
+
         private bool IsNumber(string str)
         {
             foreach (var item in str)
@@ -150,18 +176,20 @@ namespace CompetenceMatrix.Forms
                     return false;
                 }
             }
+
             return true;
         }
 
         private bool AllCellsLevelColumnIsNumber()
-        {            
-            for (int i = 0; i < GridCompetenceList.RowCount; i++)
-            {
-                if (!IsNumber(GridCompetenceList[1,i].Value.ToString()))
-                {
-                    return false;
-                }
-            }
+        {
+            //TODO багает и не дает вводить
+            // for (int i = 0; i < Int32.Parse(GridCompetenceList.Text); i++)
+            // {
+            //     if (!IsNumber(GridCompetenceList[1,i].Value.ToString()))
+            //     {
+            //         return false;
+            //     }
+            // }
             return true;
         }
     }

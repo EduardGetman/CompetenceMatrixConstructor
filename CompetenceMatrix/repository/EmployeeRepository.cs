@@ -21,7 +21,7 @@ namespace CompetenceMatrix.repository
                 employees.Add(new Employee()
                 {
                     Id = reader.GetInt32(0),
-                    PositionId = reader.GetInt32(1),
+                    PositionId = -1,
                     FullName = reader.GetString(2)
                 });
             }
@@ -77,7 +77,7 @@ namespace CompetenceMatrix.repository
         public static void Save(String name)
         {
             String sql = string.Format(
-                "insert into employee(id, pos_id, fullname) values(1,null,'{0}')",
+                "insert into employee(pos_id, fullname) values(null,'{0}')",
                 name);
             DatabaseConnection.executeNonQuery(sql);
         }

@@ -17,10 +17,23 @@ namespace CompetenceMatrix.Forms
     {
         Employee employee;
         List<Competence> competences;
+        // public FormEmployeeConstructor(Competence[] competences, Employee employee)
+        // {
+        //     // this.competences = new List<Competence>();
+        //     this.competences = new CompetenceRepository().findAll();
+        //     InitializeComponent();
+        //     this.competences.AddRange(competences);
+        //     AddCompetencesToCompetenceColumn(competences);
+        //     this.employee = employee;
+        //     SetEmployeToGridCompetenceList(employee);
+        // }
+        
+        
+        
         public FormEmployeeConstructor(Competence[] competences)
         {
             // this.competences = new List<Competence>();
-            competences = new CompetenceRepository().findAll().ToArray();
+            this.competences = new CompetenceRepository().findAll();
             InitializeComponent();
             this.competences.AddRange(competences);
             AddCompetencesToCompetenceColumn(competences);
@@ -153,13 +166,13 @@ namespace CompetenceMatrix.Forms
 
         private bool AllCellsLevelColumnIsNumber()
         {
-            for (int i = 0; i < GridCompetenceList.RowCount; i++)
-            {
-                if (!IsNumber(GridCompetenceList[1, i].Value.ToString()))
-                {
-                    return false;
-                }
-            }
+            // for (int i = 0; i < Int32.Parse(NUDCountCompetence.Text); i++)
+            // {
+            //     if (!IsNumber(GridCompetenceList[1, i].Value.ToString()))
+            //     {
+            //         return false;
+            //     }
+            // }
             return true;
         }
     }

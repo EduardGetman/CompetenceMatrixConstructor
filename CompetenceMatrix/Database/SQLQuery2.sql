@@ -16,7 +16,7 @@ insert into knowledge(id, com_id, emp_id, level) values(1,1,1,1)
 
 insert into position(id, name) values(1,'test')
 
-insert into requirement(id, pos_id, com_id, level) values(1,1,1,'test')
+insert into requirement(id, pos_id, com_id, level) values(1,1,1,1)
 
 delete from competence where id = 1 and name = 'test'
 

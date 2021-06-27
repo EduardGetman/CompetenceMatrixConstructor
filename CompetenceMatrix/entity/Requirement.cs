@@ -10,21 +10,28 @@ namespace CompetenceMatrix.entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+
         public int Level { get; set; }
-        [Required]
-        public Position Position { get; set; }
-        [Required]
-        public Competence Competence { get; set; }
+
+        public int PositionId { get; set; }
+        public int CompetenceId { get; set; }
+
+        [Required] public Position Position { get; set; }
+        [Required] public Competence Competence { get; set; }
 
         //Создаёт новый экземпляр требования и возвращает его. Добавляет новое требование в базу данных
         //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
-        public static Requirement addRequirement(Competence competence, Position position)
+        public static Requirement addRequirement(Competence competence, Position position, int level = -1)
         {
-            Requirement newRequirement = new Requirement() { Competence = competence, Position = position };
-            CompetenceMatrixContext context = new CompetenceMatrixContext();
-            context.Requirements.Add(newRequirement);
-            context.SaveChanges();
-            return newRequirement;
+            RequirementRepository.Save(new Requirement()
+                {CompetenceId = competence.Id, PositionId = position.Id, Level = level});
+            return new Requirement()
+                {CompetenceId = competence.Id, PositionId = position.Id, Level = level};
+            // Requirement newRequirement = new Requirement() { Competence = competence, Position = position };
+            // CompetenceMatrixContext context = new CompetenceMatrixContext();
+            // context.Requirements.Add(newRequirement);
+            // context.SaveChanges();
+            // return newRequirement;
         }
     }
 }

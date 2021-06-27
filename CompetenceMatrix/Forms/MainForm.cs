@@ -32,7 +32,7 @@ namespace CompetenceMatrix
                 return null;
             }
         }
-
+//TODO не работает в 156 строке
         Employee SelecetedEmployee
         {
             get
@@ -59,6 +59,7 @@ namespace CompetenceMatrix
 
         private void BtnShowWorker_Click(object sender, EventArgs e)
         {
+            //TODO нужно заново загружать список
             EmployeesSeleted = true;
             if (Employees.Count == 0)
             {
@@ -94,6 +95,8 @@ namespace CompetenceMatrix
                     "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            competences.ToArray();
             if (EmployeesSeleted == true)
             {
                 form = new FormEmployeeConstructor(competences.ToArray());
@@ -133,7 +136,7 @@ namespace CompetenceMatrix
             }
             else
             {
-                //TODO
+                //TODO необходимы id и id позиции
                 Employee.DeleteEmployee(SelecetedPosition.Id);
             }
         }
@@ -153,7 +156,11 @@ namespace CompetenceMatrix
             }
             if (EmployeesSeleted == true)
             {
-                form = new FormEmployeeConstructor(competences.ToArray(),SelecetedEmployee);
+                //TODO
+                // form = new FormEmployeeConstructor(competences.ToArray(),SelecetedEmployee);
+
+                form = new FormEmployeeConstructor(competences.ToArray(),
+                    EmployeeRepository.findByName(GridModelList.SelectedRows[0].Cells[0].ToString()));
             }
             else
             {

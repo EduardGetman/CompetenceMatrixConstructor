@@ -109,6 +109,7 @@
     <Compile Include="repository\EmployeeRepository.cs" />
     <Compile Include="repository\KnowledgeRepository.cs" />
     <Compile Include="repository\PostitonRepository.cs" />
+    <Compile Include="repository\RequirementRepository.cs" />
     <EmbeddedResource Include="Forms\FormEmployeeConstructor.resx">
       <DependentUpon>FormEmployeeConstructor.cs</DependentUpon>
     </EmbeddedResource>

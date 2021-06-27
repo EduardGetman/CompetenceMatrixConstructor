@@ -25,11 +25,11 @@ namespace CompetenceMatrix.entity
             new CompetenceRepository().Save(name);
             return new CompetenceRepository().findByName(name);
 
-            Competence newCompetence = new Competence() {Name = name};
-            CompetenceMatrixContext context = new CompetenceMatrixContext();
-            context.Competences.Add(newCompetence);
-            context.SaveChanges();
-            return newCompetence;
+            // Competence newCompetence = new Competence() {Name = name};
+            // CompetenceMatrixContext context = new CompetenceMatrixContext();
+            // context.Competences.Add(newCompetence);
+            // context.SaveChanges();
+            // return newCompetence;
         }
     }
 }
