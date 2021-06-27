@@ -45,11 +45,13 @@ namespace CompetenceMatrix.entity
         //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
         public static Position addPosition(string name)
         {
-            Position newPosition = new Position() { Name = name};
-            CompetenceMatrixContext context = new CompetenceMatrixContext();
-            context.Positions.Add(newPosition);
-            context.SaveChanges();
-            return newPosition;
+            PostitonRepository.Save(name);
+            return PostitonRepository.findByName(name);
+            // Position newPosition = new Position() { Name = name};
+            // CompetenceMatrixContext context = new CompetenceMatrixContext();
+            // context.Positions.Add(newPosition);
+            // context.SaveChanges();
+            // return newPosition;
         }
         public static Position UpdatePosition(string name, Requirement[] knowledges)
         {

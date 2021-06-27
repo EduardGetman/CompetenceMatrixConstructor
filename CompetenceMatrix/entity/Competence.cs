@@ -22,6 +22,9 @@ namespace CompetenceMatrix.entity
         //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
         public static Competence addCompetence(string name)
         {
+            new CompetenceRepository().Save(name);
+            return new CompetenceRepository().findByName(name);
+
             Competence newCompetence = new Competence() {Name = name};
             CompetenceMatrixContext context = new CompetenceMatrixContext();
             context.Competences.Add(newCompetence);

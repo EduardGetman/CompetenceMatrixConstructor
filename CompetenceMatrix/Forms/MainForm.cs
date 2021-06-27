@@ -52,9 +52,9 @@ namespace CompetenceMatrix
         public MainForm()
         {
             InitializeComponent();
-            Employees = new List<Employee>();
-            Positions = new List<Position>();
-            competences = new List<Competence>();
+            Employees = new EmployeeRepository().findAll();
+            Positions = new PostitonRepository().findAll();
+            competences = new CompetenceRepository().findAll();
         }
 
         private void BtnShowWorker_Click(object sender, EventArgs e)
@@ -118,12 +118,22 @@ namespace CompetenceMatrix
                     "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            // if (EmployeesSeleted == true)
+            // {
+            //     Employee.DeleteEmployee(SelecetedEmployee.Id);
+            // }
+            // else
+            // {
+            //     Employee.DeleteEmployee(SelecetedPosition.Id);
+            // }
+            
             if (EmployeesSeleted == true)
             {
-                Employee.DeleteEmployee(SelecetedEmployee.Id);
+                new EmployeeRepository().deleteById(SelecetedEmployee.Id);
             }
             else
             {
+                //TODO
                 Employee.DeleteEmployee(SelecetedPosition.Id);
             }
         }

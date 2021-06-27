@@ -19,7 +19,8 @@ namespace CompetenceMatrix.Forms
         List<Competence> competences;
         public FormEmployeeConstructor(Competence[] competences)
         {
-            this.competences = new List<Competence>();
+            // this.competences = new List<Competence>();
+            competences = new CompetenceRepository().findAll().ToArray();
             InitializeComponent();
             this.competences.AddRange(competences);
             AddCompetencesToCompetenceColumn(competences);
@@ -108,6 +109,7 @@ namespace CompetenceMatrix.Forms
         }
         private Employee UpdateEmployee()
         {
+            //TODO
             throw new NotImplementedException();
         }
         private Competence GetCompetenceByName(string name)

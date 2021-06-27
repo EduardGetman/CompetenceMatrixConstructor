@@ -17,7 +17,7 @@ namespace CompetenceMatrix.entity
 
         // Я так понял здесь что-то наебнулось так как знаний должнобыть много.
         // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId
-        
+
         public int PositionId { get; set; }
         
         //
@@ -62,11 +62,13 @@ namespace CompetenceMatrix.entity
         //Не уверен что в возвращаемом объекте будут инициализированы все поля, например id
         public static Employee addEmployee(string name)
         {
-            Employee newEmployee = new Employee() { FullName = name };
-            CompetenceMatrixContext context = new CompetenceMatrixContext();
-            context.Employees.Add(newEmployee);
-            context.SaveChanges();
-            return newEmployee;
+            EmployeeRepository.Save(name);
+            return EmployeeRepository.findByName(name);
+            // Employee newEmployee = new Employee() { FullName = name };
+            // CompetenceMatrixContext context = new CompetenceMatrixContext();
+            // context.Employees.Add(newEmployee);
+            // context.SaveChanges();
+            // return newEmployee;
         }
 
         public Knowledge GetKnowledgeByCompetence(Competence competence)
