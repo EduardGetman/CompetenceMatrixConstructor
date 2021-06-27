@@ -143,6 +143,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\CompetenceLAM.ldb" />
+    <Content Include="Database\CompetenceLAM.ldm" />
+    <Content Include="Database\CompetenceLAM2.ldm" />
+    <Content Include="Database\CompetenceLAM2.pdb" />
+    <Content Include="Database\CompetenceLAM2.pdm" />
+    <Content Include="Database\crebas.sql" />
+    <Content Include="Database\SQLQuery2.sql" />
+    <Content Include="Database\Workspace.sws" />
+    <Content Include="Database\запросы.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
