@@ -104,6 +104,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\CompetenceMatrixContext.cs" />
+    <Compile Include="repository\CompetenceRepository.cs" />
+    <Compile Include="repository\DatabaseConnection.cs" />
+    <Compile Include="repository\EmployeeRepository.cs" />
+    <Compile Include="repository\PostitonRepository.cs" />
     <EmbeddedResource Include="Forms\FormEmployeeConstructor.resx">
       <DependentUpon>FormEmployeeConstructor.cs</DependentUpon>
     </EmbeddedResource>

@@ -17,6 +17,10 @@ namespace CompetenceMatrix.entity
 
         // Я так понял здесь что-то наебнулось так как знаний должнобыть много.
         // Сообщи как закончишь я доделаю метод GetKnowledgeByCompetenceId
+        
+        public int PositionId { get; set; }
+        
+        //
         public Knowledge Knowledge { get; set; }
         public Position Position { get; set; }
 
